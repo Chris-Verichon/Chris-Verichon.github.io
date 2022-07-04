@@ -3,6 +3,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "homepage": "http://Chris-Verichon.github.io/portefolio",
     "lint": "eslint ./src/** --no-error-on-unmatched-pattern",
     "lint:fix": "eslint --fix ./src/** --no-error-on-unmatched-pattern",
     "clean": "rm -rf dist",
@@ -52,6 +55,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -59,18 +63,20 @@
   "resolutions": {
     "cheerio": "1.0.0-rc.10"
   },
-   "jest": {
+  "jest": {
     "modulePaths": [
       "./"
     ],
     "roots": [
       "<rootDir>/src",
       "<rootDir>/tests"
-    ],    
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less|scss)$": "<rootDir>/tests/__mocks__/styleMock.js"
     },
-    "setupFilesAfterEnv": ["<rootDir>/tests/.setup.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/.setup.js"
+    ]
   }
 }
